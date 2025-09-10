@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+.site-header, .site-footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.site-footer {
+  border-top: 1px solid #e2e8f0;
+  border-bottom: none;
+  margin-top: 4rem;
+  color: #64748b;
+}
+
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
