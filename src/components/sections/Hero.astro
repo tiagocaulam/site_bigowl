@@ -1,0 +1,78 @@
+---
+// src/components/sections/Hero.astro
+import Button from '../ui/Button.astro';
+---
+<section class="hero">
+  <div class="container hero-container">
+    <div class="hero-content">
+      <img src="/images/logo-raio-preto-branco.png" alt="Logo da Coleção" class="collection-logo"/>
+      <h1>Nova coleção de Pokemon: Raio Preto e Fogo Branco!</h1>
+      <p>Adiquira agora a nova coleção do Pokémon TCG. Temos packs avulsos, Blisters e ETBs prontos para você.</p>
+      <div class="hero-buttons">
+        <Button href="/comprar" text="Comprar agora" variant="primary" />
+        <Button href="/colecoes" text="Visualizar as coleções" variant="secondary" />
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="/images/pokemon-tcg-logo.png" alt="Pokémon Trading Card Game"/>
+    </div>
+  </div>
+  <div class="bottom-logos">
+    <img src="/images/logo-pokemon-sm.png" alt="Pokémon Logo"/>
+    <img src="/images/logo-rivais.png" alt="Rivais Predestinados Logo"/>
+    <img src="/images/logo-raio-preto-sm.png" alt="Raio Preto Logo"/>
+    <img src="/images/logo-fogo-branco-sm.png" alt="Fogo Branco Logo"/>
+  </div>
+</section>
+
+<style>
+  .hero {
+    background-color: var(--color-dark);
+    color: var(--color-text-light);
+    padding: 4rem 0 0 0;
+    /* PLACEHOLDER - A imagem de fundo com padrão vermelho vai aqui */
+    background-image: url('/images/hero-bg-pattern.png');
+    background-size: cover;
+    background-position: center;
+  }
+  .hero-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 2rem;
+  }
+  .collection-logo {
+    width: 250px; /* Ajuste o tamanho */
+    margin-bottom: 1rem;
+  }
+  .hero-content h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+  }
+  .hero-content p {
+    font-size: 1.1rem;
+    max-width: 500px;
+  }
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .hero-image img {
+    width: 100%;
+    max-width: 500px;
+  }
+  .bottom-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    padding: 2rem 0;
+    background-color: rgba(0,0,0,0.2);
+    margin-top: 4rem;
+  }
+  .bottom-logos img {
+    height: 40px; /* Ajuste o tamanho */
+    opacity: 0.7;
+  }
+</style>

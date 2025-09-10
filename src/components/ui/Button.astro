@@ -1,0 +1,36 @@
+---
+// src/components/ui/Button.astro
+const { href, text, variant = 'primary' } = Astro.props;
+---
+<a href={href} class:list={['button', variant]}>
+  {text}
+</a>
+
+<style>
+  .button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+  }
+  .primary {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+  }
+  .primary:hover {
+    opacity: 0.9;
+  }
+  .secondary {
+    background-color: transparent;
+    color: var(--color-text-light);
+    border-color: var(--color-text-light);
+  }
+  .secondary:hover {
+    background-color: var(--color-text-light);
+    color: var(--color-dark);
+  }
+</style>

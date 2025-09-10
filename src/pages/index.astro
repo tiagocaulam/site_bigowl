@@ -1,21 +1,11 @@
 ---
-// 1. Importar o Layout
-// Sua pasta 'layouts' está na raiz (fora de src), então precisamos subir 2 níveis (../..)
-import Layout from '../../layouts/layout.astro';
-
-// 2. Importar o Componente de Card
-// Agora 'components' está dentro de 'src', então subimos 1 nível (../) para chegar em 'src' e entramos em 'components'
-import ProductCard from '../components/products/ProductCard.astro';
-
-// 3. Importar os Dados dos Produtos
-// O mesmo para os dados. Pela sua imagem, a pasta 'data' está dentro de 'src/components'
-import { products } from '../components/data/products.js';
+import Layout from '../layouts/layout.astro';
+import Header from '../components/layout/Header.astro';
+import Hero from '../components/sections/Hero.astro';
+// A seção de produtos virá aqui depois
 ---
-
 <Layout>
-  <div class="product-grid">
-    {products.map(product => (
-      <ProductCard product={product} />
-    ))}
-  </div>
-</Layout>
+  <Header />
+  <Hero />
+  
+  </Layout>

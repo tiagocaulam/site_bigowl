@@ -1,32 +1,25 @@
+/* public/global.css */
+
+/* 1. Definição das Cores e Fontes (Variáveis CSS) */
+:root {
+  --color-primary: #D92E3A; /* Vermelho principal dos botões */
+  --color-dark: #121212;     /* Fundo escuro do Hero */
+  --color-text-dark: #333;  /* Texto escuro do Header */
+  --color-text-light: #FFFFFF; /* Texto claro do Hero */
+  --font-body: 'Poppins', sans-serif; /* Sugestão de fonte - precisa ser importada */
+}
+
+/* 2. Estilos Base */
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-body);
   background-color: #f8fafc;
-  color: #1e293b;
+  color: var(--color-text-dark);
 }
 
-.site-header, .site-footer {
-  text-align: center;
-  padding: 2rem;
-  background-color: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.site-footer {
-  border-top: 1px solid #e2e8f0;
-  border-bottom: none;
-  margin-top: 4rem;
-  color: #64748b;
-}
-
-main {
+/* 3. Classe Utilitária para Centralizar Conteúdo */
+.container {
   max-width: 1200px;
-  margin: 2rem auto;
+  margin: 0 auto;
   padding: 0 1rem;
-}
-
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
 }

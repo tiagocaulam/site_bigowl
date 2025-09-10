@@ -1,0 +1,36 @@
+---
+// src/components/layout/Header.astro
+import Logo from '../ui/Logo.astro';
+import Nav from './Nav.astro';
+---
+<header>
+  <div class="container header-container">
+    <Logo />
+    <Nav />
+    <div class="user-actions">
+      <a href="/busca"><img src="/images/icon-search.svg" alt="Buscar"/></a>
+      <a href="/perfil"><img src="/images/icon-user.svg" alt="Perfil"/></a>
+      <a href="/carrinho"><img src="/images/icon-cart.svg" alt="Carrinho"/></a>
+    </div>
+  </div>
+</header>
+
+<style>
+  header {
+    background-color: var(--color-text-light);
+    border-bottom: 1px solid #e2e8f0;
+    padding: 1rem 0;
+  }
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .user-actions {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .user-actions img {
+    height: 24px;
+  }
+</style>
