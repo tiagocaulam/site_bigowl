@@ -1,5 +1,4 @@
 ---
-// src/components/layout/Header.astro
 import Logo from '../ui/Logo.astro';
 import Nav from './Nav.astro';
 ---
@@ -8,9 +7,15 @@ import Nav from './Nav.astro';
     <Logo />
     <Nav />
     <div class="user-actions">
-      <a href="/busca"><img src="/images/icon-search.svg" alt="Buscar"/></a>
-      <a href="/perfil"><img src="/images/icon-user.svg" alt="Perfil"/></a>
-      <a href="/carrinho"><img src="/images/icon-cart.svg" alt="Carrinho"/></a>
+      <a href="/busca" aria-label="Buscar">
+        <span class="material-symbols-outlined">search</span>
+      </a>
+      <a href="/perfil" aria-label="Perfil">
+        <span class="material-symbols-outlined">person</span>
+      </a>
+      <a href="/carrinho" aria-label="Carrinho">
+        <span class="material-symbols-outlined">shopping_cart</span>
+      </a>
     </div>
   </div>
 </header>
@@ -28,9 +33,23 @@ import Nav from './Nav.astro';
   }
   .user-actions {
     display: flex;
+    align-items: center;
     gap: 1.5rem;
   }
-  .user-actions img {
-    height: 24px;
+  
+  /* --- MUDANÇA AQUI --- */
+  .user-actions a {
+    /* Mude de --color-text-dark para --color-primary */
+    color: var(--color-primary); 
+    text-decoration: none;
+    transition: opacity 0.2s ease; /* Mudei a transição para opacidade */
+  }
+  .user-actions a:hover {
+    /* Adicionei um efeito de hover para dar feedback visual */
+    opacity: 0.7; 
+  }
+  .material-symbols-outlined {
+    font-size: 28px;
+    vertical-align: middle;
   }
 </style>

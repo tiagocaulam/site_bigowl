@@ -5,7 +5,7 @@ import Button from '../ui/Button.astro';
 <section class="hero">
   <div class="container hero-container">
     <div class="hero-content">
-      <img src="/images/logo-raio-preto-branco.png" alt="Logo da Coleção" class="collection-logo"/>
+      <img src="/images/logo-raio-preto-branco.png" alt="Logo da Coleção" class="collection-logo" />
       <h1>Nova coleção de Pokemon: Raio Preto e Fogo Branco!</h1>
       <p>Adiquira agora a nova coleção do Pokémon TCG. Temos packs avulsos, Blisters e ETBs prontos para você.</p>
       <div class="hero-buttons">
@@ -18,10 +18,10 @@ import Button from '../ui/Button.astro';
     </div>
   </div>
   <div class="bottom-logos">
-    <img src="/images/logo-pokemon-sm.png" alt="Pokémon Logo"/>
-    <img src="/images/logo-rivais.png" alt="Rivais Predestinados Logo"/>
-    <img src="/images/logo-raio-preto-sm.png" alt="Raio Preto Logo"/>
-    <img src="/images/logo-fogo-branco-sm.png" alt="Fogo Branco Logo"/>
+    <img src="/images/logo-mega-evolution.png" alt="Pokémon Logo"/>
+    <img src="/images/logo-rivais-predestinados.png" alt="Rivais Predestinados Logo"/>
+    <img src="/images/logo-raio-preto.png" alt="Raio Preto Logo"/>
+    <img src="/images/logo-fogo-branco.png" alt="Fogo Branco Logo"/>
   </div>
 </section>
 
@@ -30,49 +30,100 @@ import Button from '../ui/Button.astro';
     background-color: var(--color-dark);
     color: var(--color-text-light);
     padding: 4rem 0 0 0;
-    /* PLACEHOLDER - A imagem de fundo com padrão vermelho vai aqui */
     background-image: url('/images/hero-bg-pattern.png');
     background-size: cover;
     background-position: center;
+    overflow: hidden; /* Garante que nada vaze para os lados */
   }
   .hero-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
+    /* Usando rem para o gap */
     gap: 2rem;
   }
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
   .collection-logo {
-    width: 250px; /* Ajuste o tamanho */
+    width: 100%; /* Ocupa 100% do espaço do pai */
+    /* Convertido para rem e usado como max-width */
+    max-width: 18.75rem; /* 300px / 16px = 18.75rem */
+    align-self: center;
     margin-bottom: 1rem;
   }
   .hero-content h1 {
-    font-size: 3rem;
+    /* Texto fluido: mínimo de 2.25rem, ideal de 5vw, máximo de 3rem */
+    font-size: clamp(2.25rem, 5vw, 3rem);
     line-height: 1.2;
   }
   .hero-content p {
-    font-size: 1.1rem;
-    max-width: 500px;
+    /* Texto fluido: mínimo de 1rem, ideal de 2vw, máximo de 1.1rem */
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    max-width: 31.25rem; /* 500px / 16px = 31.25rem */
   }
   .hero-buttons {
     display: flex;
+    flex-wrap: wrap; /* Permite que os botões quebrem a linha em telas menores */
     gap: 1rem;
     margin-top: 2rem;
   }
   .hero-image img {
     width: 100%;
-    max-width: 500px;
+    /* Convertido para rem */
+    max-width: 50rem; /* 800px / 16px = 50rem */
   }
   .bottom-logos {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 3rem;
-    padding: 2rem 0;
+    gap: 2rem; /* Reduzido um pouco para caber melhor */
+    padding: 2rem 1rem; /* Adicionado padding lateral */
     background-color: rgba(0,0,0,0.2);
     margin-top: 4rem;
+    flex-wrap: wrap; /* Permite que os logos quebrem a linha */
   }
   .bottom-logos img {
-    height: 40px; /* Ajuste o tamanho */
+    /* Convertido para rem */
+    height: 6.25rem; /* 100px / 16px = 6.25rem */
     opacity: 0.7;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .bottom-logos img:hover {
+    opacity: 1;
+    transform: scale(1.15);
+    cursor: pointer;
+  }
+
+  /* --- MEDIA QUERY PARA RESPONSIVIDADE --- */
+  /* Estilos aplicados em telas com largura máxima de 768px (tablets e celulares) */
+  @media (max-width: 768px) {
+    .hero-container {
+      /* Transforma o grid de 2 colunas em 1 coluna */
+      grid-template-columns: 1fr;
+      text-align: center; /* Centraliza todo o texto dentro do container */
+    }
+    .hero-content {
+      /* Centraliza os itens (logo, texto, botões) */
+      align-items: center;
+    }
+    .hero-image {
+      /* No mobile, a imagem principal é movida para baixo por padrão. */
+      /* Se quiser que ela venha antes do texto, use 'order: -1' */
+      margin-top: 2rem;
+    }
+    .hero-buttons {
+      /* Centraliza os botões no mobile */
+      justify-content: center;
+    }
+    .bottom-logos {
+      gap: 1.5rem; /* Diminui o espaçamento entre os logos */
+    }
+    .bottom-logos img {
+      height: 4rem; /* Diminui um pouco o tamanho dos logos no mobile */
+    }
   }
 </style>

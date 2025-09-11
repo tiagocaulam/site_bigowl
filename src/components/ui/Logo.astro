@@ -2,12 +2,15 @@
 // src/components/ui/Logo.astro
 ---
 <a href="/" class="logo">
-  <img src="/images/logo-big-owl.svg" alt="Big Owl Logo" />
+  <img src="/images/logo-big-owl.png" alt="Big Owl Logo" />
 </a>
 
 <style>
   .logo img {
-    height: 40px; /* Ajuste a altura conforme necessário */
+    /* Aumentamos a altura para 3.125rem (equivalente a 50px) */
+    height: 3.125rem;
     width: auto;
+    /* Adicionando vertical-align para garantir alinhamento perfeito no header */
+    vertical-align: middle;
   }
 </style>
