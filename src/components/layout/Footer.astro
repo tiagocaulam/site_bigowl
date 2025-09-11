@@ -3,7 +3,6 @@
 const currentYear = new Date().getFullYear();
 const base = import.meta.env.BASE_URL;
 
-// Links do rodapé com os caminhos base corretos
 const footerLinks = [
   { href: `${base}`, text: "Home" },
   { href: `${base}produtos/`, text: "Produtos" },
@@ -12,26 +11,24 @@ const footerLinks = [
 ];
 ---
 <footer class="footer">
-  <div class="container">
+  <div class="container footer-content">
     <div class="footer__social">
+      <a href="#" aria-label="Youtube" class="footer__icon">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.406.595 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.406 24 22.674V1.326C24 .592 23.406 0 22.675 0"></path></svg>
+      </a>
       <a href="#" aria-label="Instagram" class="footer__icon">
-        <span class="material-symbols-outlined">photo_camera</span>
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.266.058 1.77.218 2.368.455.6.236 1.05.55 1.516 1.016.466.466.78 1.016 1.016 1.616.236.6.4 1.102.455 2.368.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.055 1.266-.22 1.77-.455 2.368-.236.6-.55 1.05-1.016 1.516-.466.466-1.016.78-1.616 1.016-.6.236-1.102.4-2.368.455-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.266-.055-1.77-.22-2.368-.455-.6-.236-1.05-.55-1.516-1.016-.466-.466-.78-1.016-1.016-1.616-.236-.6-.4-1.102-.455-2.368C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.055-1.266.22-1.77.455-2.368.236-.6.55-1.05 1.016-1.516.466.466 1.016-.78 1.616-1.016.6-.236 1.102-.4 2.368.455C8.416 2.175 8.796 2.163 12 2.163m0-2.163C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.784.3-1.448.747-2.12 1.42S.93 3.354.63 4.137c-.3.765-.5 1.635-.558 2.913C.015 8.333 0 8.74 0 12s.015 3.667.072 4.947c.058 1.277.258 2.148.558 2.913.3.784.747 1.448 1.42 2.12.67.673 1.335 1.12 2.12 1.42.765.3 1.635.5 2.913.558C8.333 23.985 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.058 2.148-.258 2.913-.558.784-.3 1.448-.747 2.12-1.42.673-.67 1.12-1.335 1.42-2.12.3-.765.5-1.635.558-2.913.057-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.058-1.277-.258-2.148-.558-2.913-.3-.784-.747-1.448-1.42-2.12C20.647.93 20.002.484 19.22.18c-.765-.3-1.635-.5-2.913-.558C15.667.015 15.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"></path></svg>
       </a>
-      <a href="#" aria-label="Facebook" class="footer__icon">
-        <span class="material-symbols-outlined">facebook</span>
-      </a>
-      <a href="#" aria-label="Twitter" class="footer__icon">
-        <span class="material-symbols-outlined">sms</span>
-      </a>
-    </div>
+      </div>
     <nav class="footer__nav">
       {footerLinks.map(link => (
         <a href={link.href}>{link.text}</a>
       ))}
     </nav>
-    <div class="footer__copy">
-      Copyright © {currentYear} <br> <span>BIG OWL</span> TCG Store 
-    </div>
+  </div>
+
+  <div class="footer__copy">
+    Copyright © {currentYear} <br> <span>BIG OWL</span> TCG Store 
   </div>
 </footer>
 
@@ -41,19 +38,20 @@ const footerLinks = [
     color: var(--color-text-light);
     font-family: var(--font-body);
     box-shadow: 0 8px 24px 0 rgba(0,0,0,0.25);
-    padding: 2.5rem 0 0.5rem 0;
+    padding-top: 2.5rem; /* Apenas padding no topo */
     margin-top: 4rem;
   }
-  .container {
+  .footer-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
+    padding-bottom: 2.5rem; /* Espaço até a barra de copyright */
   }
   .footer__social {
     display: flex;
     justify-content: center;
-    gap: 1.5rem; /* Reduzido um pouco */
+    gap: 1.5rem;
   }
   .footer__icon {
     display: flex;
@@ -67,9 +65,6 @@ const footerLinks = [
     transition: background 0.2s, color 0.2s, transform 0.2s;
     box-shadow: 0 2px 8px 0 rgba(0,0,0,0.15);
   }
-  .footer__icon .material-symbols-outlined {
-    font-size: 2rem; /* 32px */
-  }
   .footer__icon:hover {
     background: var(--color-primary);
     color: #fff;
@@ -77,10 +72,10 @@ const footerLinks = [
   }
   .footer__nav {
     display: flex;
-    flex-wrap: wrap; /* Para telas pequenas */
     justify-content: center;
+    flex-wrap: wrap; /* Adicionado para responsividade */
     gap: 2.5rem;
-    font-size: 1rem; /* Ajustado para tamanho mais comum */
+    font-size: 1rem; /* Ajustado */
   }
   .footer__nav a {
     color: var(--color-text-light);
@@ -93,16 +88,13 @@ const footerLinks = [
   .footer__copy {
     background: #000;
     text-align: center;
-    padding: 0.75rem 1.5rem; /* Aumentado o padding lateral */
-    font-size: 0.9rem; /* Ajustado */
-    color: var(--color-text-light);
-    letter-spacing: 0.02em;
-    width: 100%; /* Ocupa a largura total da cor de fundo */
-    box-sizing: border-box; /* Garante que o padding não aumente a largura */
+    padding: 1rem 1rem 0.75rem 1rem; /* Ajustado */
+    font-size: 0.9rem;
+    color: #888; /* Cor mais suave para o texto de copyright */
+    line-height: 1.5;
   }
   .footer__copy span {
     color: var(--color-primary);
     font-weight: 500;
-    letter-spacing: 0.05em;
   }
 </style>
