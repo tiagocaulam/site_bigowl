@@ -1,0 +1,43 @@
+---
+// Seção de produtos resumida para a home
+---
+<section class="home-products">
+  <h2>Nossos produtos</h2>
+  <p class="home-products__desc">Descubra nosso catálogo de produtos totalmente oficiais de Pokémon</p>
+  <div class="home-products__coming-soon">
+    <span>Novidades em breve!</span>
+  </div>
+</section>
+
+<style>
+.home-products {
+  max-width: 1200px;
+  margin: 0 auto 3rem auto;
+  padding: 2.5rem 1rem 1rem 1rem;
+  text-align: center;
+}
+.home-products h2 {
+  font-size: 2.5rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 0.5rem;
+}
+.home-products__desc {
+  color: var(--color-text-dark);
+  font-size: 1.15rem;
+  margin-bottom: 2rem;
+}
+.home-products__coming-soon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 180px;
+  background: #eceff1;
+  border-radius: 12px;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  font-weight: 500;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.07);
+}
+</style>
