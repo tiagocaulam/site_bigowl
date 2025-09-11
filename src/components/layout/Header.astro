@@ -1,26 +1,32 @@
 ---
+// src/components/layout/Header.astro
 import Logo from '../ui/Logo.astro';
 import Nav from './Nav.astro';
+// --- MUDANÇA AQUI (INÍCIO) ---
+const base = import.meta.env.BASE_URL;
 ---
 <header>
   <div class="container header-container">
     <Logo />
     <Nav />
     <div class="user-actions">
-      <a href="/busca" aria-label="Buscar">
+      {/* Adicionamos a variável 'base' e a barra final para corrigir os links */}
+      <a href={`${base}busca/`} aria-label="Buscar">
         <span class="material-symbols-outlined">search</span>
       </a>
-      <a href="/perfil" aria-label="Perfil">
+      <a href={`${base}perfil/`} aria-label="Perfil">
         <span class="material-symbols-outlined">person</span>
       </a>
-      <a href="/carrinho" aria-label="Carrinho">
+      <a href={`${base}carrinho/`} aria-label="Carrinho">
         <span class="material-symbols-outlined">shopping_cart</span>
       </a>
+      {/* --- MUDANÇA AQUI (FIM) --- */}
     </div>
   </div>
 </header>
 
 <style>
+  /* Seu CSS está perfeito, nenhuma mudança necessária aqui */
   header {
     background-color: var(--color-text-light);
     border-bottom: 1px solid #e2e8f0;
@@ -37,15 +43,12 @@ import Nav from './Nav.astro';
     gap: 1.5rem;
   }
   
-  /* --- MUDANÇA AQUI --- */
   .user-actions a {
-    /* Mude de --color-text-dark para --color-primary */
     color: var(--color-primary); 
     text-decoration: none;
-    transition: opacity 0.2s ease; /* Mudei a transição para opacidade */
+    transition: opacity 0.2s ease;
   }
   .user-actions a:hover {
-    /* Adicionei um efeito de hover para dar feedback visual */
     opacity: 0.7; 
   }
   .material-symbols-outlined {

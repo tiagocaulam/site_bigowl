@@ -1,16 +1,16 @@
 ---
-// src/components/ui/Logo.astro
+// 1. Importamos a variável que contém o caminho base
+const base = import.meta.env.BASE_URL;
 ---
-<a href="/" class="logo">
-  <img src="/images/logo-big-owl.png" alt="Big Owl Logo" />
+<a href={base} class="logo">
+  <img src={`${base}images/logo-big-owl.png`} alt="Big Owl Logo" />
 </a>
 
 <style>
+  /* Seu CSS está perfeito, nenhuma mudança necessária aqui. */
   .logo img {
-    /* Aumentamos a altura para 3.125rem (equivalente a 50px) */
-    height: 3.125rem;
+    height: 3.125rem; /* 50px */
     width: auto;
-    /* Adicionando vertical-align para garantir alinhamento perfeito no header */
     vertical-align: middle;
   }
 </style>
