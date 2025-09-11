@@ -1,18 +1,35 @@
 ---
 // src/components/layout/Nav.astro
+
+const { pathname } = Astro.url;
+
 const navLinks = [
   { href: "/", text: "Home" },
   { href: "/produtos", text: "Produtos" },
   { href: "/sobre", text: "Sobre Nós" },
   { href: "/duvidas", text: "Dúvidas" },
   { href: "/contatos", text: "Contatos" },
-]
+];
 ---
 <nav>
   <ul>
-    {navLinks.map(link => (
-      <li><a href={link.href}>{link.text}</a></li>
-    ))}
+    {navLinks.map(link => {
+      {/* --- LÓGICA ATUALIZADA AQUI --- */}
+      const isActive = link.href === '/' 
+        ? pathname === link.href 
+        : pathname.startsWith(link.href);
+
+      return (
+        <li>
+          <a 
+            href={link.href} 
+            class:list={{ active: isActive }}
+          >
+            {link.text}
+          </a>
+        </li>
+      );
+    })}
   </ul>
 </nav>
 
@@ -29,8 +46,16 @@ const navLinks = [
     color: var(--color-text-dark);
     font-weight: 500;
     transition: color 0.2s;
+    padding-bottom: 0.25rem;
+    border-bottom: 2px solid transparent;
   }
   nav a:hover {
     color: var(--color-primary);
+  }
+
+  nav a.active {
+    color: var(--color-primary);
+    font-weight: 700;
+    border-bottom-color: var(--color-primary);
   }
 </style>
