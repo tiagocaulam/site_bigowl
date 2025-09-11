@@ -1,9 +1,13 @@
 ---
+// src/components/products/ProductCard.astro
 const { product } = Astro.props;
+// --- MUDANÇA AQUI (INÍCIO) ---
+const base = import.meta.env.BASE_URL;
 ---
-
 <div class="card">
-  <img src={product.image} alt={`Imagem do ${product.name}`} />
+  {/* Adicionamos a variável 'base' ao caminho da imagem */}
+  <img src={`${base}${product.image}`} alt={`Imagem do ${product.name}`} />
+  {/* --- MUDANÇA AQUI (FIM) --- */}
   <div class="card-content">
     <h2>{product.name}</h2>
     <p>{product.description}</p>
@@ -14,6 +18,7 @@ const { product } = Astro.props;
 </div>
 
 <style>
+/* Seu CSS está perfeito, nenhuma mudança necessária aqui. */
 .card {
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -40,7 +45,7 @@ const { product } = Astro.props;
   display: inline-block;
   margin-top: 1rem;
   padding: 0.75rem 1.5rem;
-  background-color: #2563eb;
+  background-color: #2563eb; /* Note que esta cor não está na sua paleta de variáveis globais */
   color: white;
   text-decoration: none;
   border-radius: 5px;
