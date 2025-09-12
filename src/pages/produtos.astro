@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/layout.astro';
+import Header from '../components/layout/Header.astro';
+---
+<Layout>
+  <Header />
+  <section class="page-hero">
+    <h1>Produtos</h1>
+  </section>
+  <main class="page-maintenance">
+    <p>Em manutenção, volte novamente mais tarde.</p>
+  </main>
+</Layout>
+<style>
+.page-hero {
+  background: #eceff1;
+  padding: 3rem 0 2rem 0;
+  text-align: center;
+}
+.page-hero h1 {
+  font-family: var(--font-body);
+  font-size: 2.5rem;
+  color: var(--color-dark);
+  font-weight: 700;
+  margin: 0;
+}
+.page-maintenance {
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  color: var(--color-dark);
+}
+.page-maintenance p {
+  font-size: 1.2rem;
+  color: var(--color-primary);
+}
+</style>
