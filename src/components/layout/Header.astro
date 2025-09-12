@@ -1,8 +1,6 @@
 ---
-// src/components/layout/Header.astro
 import Logo from '../ui/Logo.astro';
 import Nav from './Nav.astro';
-// --- MUDANÇA AQUI (INÍCIO) ---
 const base = import.meta.env.BASE_URL;
 ---
 <header>
@@ -10,23 +8,30 @@ const base = import.meta.env.BASE_URL;
     <Logo />
     <Nav />
     <div class="user-actions">
-      {/* Adicionamos a variável 'base' e a barra final para corrigir os links */}
-      <a href={`${base}busca/`} aria-label="Buscar">
-        <span class="material-symbols-outlined">search</span>
+      {/* --- ÍCONE DO INSTAGRAM (APENAS O PATH) --- */}
+      <a href="https://www.instagram.com/bigowlstore" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icon">
+        <svg fill="currentColor" role="img" viewBox="0 0 24 24">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.266.058 1.77.218 2.368.455.6.236 1.05.55 1.516 1.016.466.466.78 1.016 1.016 1.616.236.6.4 1.102.455 2.368.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.055 1.266-.22 1.77-.455 2.368-.236.6-.55 1.05-1.016 1.516-.466.466-1.016.78-1.616 1.016-.6.236-1.102.4-2.368.455-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.266-.055-1.77-.22-2.368-.455-.6-.236-1.05-.55-1.516-1.016-.466-.466-.78-1.016-1.016-1.616-.236-.6-.4-1.102-.455-2.368C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.055-1.266.22-1.77.455-2.368.236-.6.55-1.05 1.016-1.516.466.466 1.016-.78 1.616-1.016.6-.236 1.102-.4 2.368.455C8.416 2.175 8.796 2.163 12 2.163m0-2.163C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.784.3-1.448.747-2.12 1.42S.93 3.354.63 4.137c-.3.765-.5 1.635-.558 2.913C.015 8.333 0 8.74 0 12s.015 3.667.072 4.947c.058 1.277.258 2.148.558 2.913.3.784.747 1.448 1.42 2.12.67.673 1.335 1.12 2.12 1.42.765.3 1.635.5 2.913.558C8.333 23.985 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.058 2.148-.258 2.913-.558.784-.3 1.448-.747 2.12-1.42.673-.67 1.12-1.335 1.42-2.12.3-.765.5-1.635.558-2.913.057-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.058-1.277-.258-2.148-.558-2.913-.3-.784-.747-1.448-1.42-2.12C20.647.93 20.002.484 19.22.18c-.765-.3-1.635-.5-2.913-.558C15.667.015 15.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"></path>
+        </svg>
       </a>
-      <a href={`${base}perfil/`} aria-label="Perfil">
-        <span class="material-symbols-outlined">person</span>
+      
+      {/* --- ÍCONE DO YOUTUBE (APENAS O PATH) --- */}
+      <a href="https://www.youtube.com/@NewlTCG" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="social-icon">
+        <svg fill="currentColor" role="img" viewBox="0 0 24 24">
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
+        </svg>
       </a>
-      <a href={`${base}carrinho/`} aria-label="Carrinho">
-        <span class="material-symbols-outlined">shopping_cart</span>
+
+      <a href="https://shopee.com.br/bigowl_tcgstore" target="_blank" rel="noopener noreferrer" aria-label="Shopee" class="social-icon shopee-icon">
+        <svg fill="currentColor" role="img" viewBox="0 0 109.59 122.88">
+          <path d="M74.98,91.98C76.15,82.36,69.96,76.22,53.6,71c-7.92-2.7-11.66-6.24-11.57-11.12 c0.33-5.4,5.36-9.34,12.04-9.47c4.63,0.09,9.77,1.22,14.76,4.56c0.59,0.37,1.01,0.32,1.35-0.2c0.46-0.74,1.61-2.53,2-3.17 c0.26-0.42,0.31-0.96-0.35-1.44c-0.95-0.7-3.6-2.13-5.03-2.72c-3.88-1.62-8.23-2.64-12.86-2.63c-9.77,0.04-17.47,6.22-18.12,14.47 c-0.42,5.95,2.53,10.79,8.86,14.47c1.34,0.78,8.6,3.67,11.49,4.57c9.08,2.83,13.8,7.9,12.69,13.81c-1.01,5.36-6.65,8.83-14.43,8.93 c-6.17-0.24-11.71-2.75-16.02-6.1c-0.11-0.08-0.65-0.5-0.72-0.56c-0.53-0.42-1.11-0.39-1.47,0.15c-0.26,0.4-1.92,2.8-2.34,3.43 c-0.39,0.55-0.18,0.86,0.23,1.2c1.8,1.5,4.18,3.14,5.81,3.97c4.47,2.28,9.32,3.53,14.48,3.72c3.32,0.22,7.5-0.49,10.63-1.81 C70.63,102.67,74.25,97.92,74.98,91.98L74.98,91.98z M54.79,7.18c-10.59,0-19.22,9.98-19.62,22.47h39.25 C74.01,17.16,65.38,7.18,54.79,7.18L54.79,7.18z M94.99,122.88l-0.41,0l-80.82-0.01h0c-5.5-0.21-9.54-4.66-10.09-10.19l-0.05-1 l-3.61-79.5v0C0,32.12,0,32.06,0,32c0-1.28,1.03-2.33,2.3-2.35l0,0h25.48C28.41,13.15,40.26,0,54.79,0s26.39,13.15,27.01,29.65 h25.4h0.04c1.3,0,2.35,1.05,2.35,2.35c0,0.04,0,0.08,0,0.12v0l-3.96,79.81l-0.04,0.68C105.12,118.21,100.59,122.73,94.99,122.88 L94.99,122.88z"></path>
+        </svg>
       </a>
-      {/* --- MUDANÇA AQUI (FIM) --- */}
     </div>
   </div>
 </header>
 
 <style>
-  /* Seu CSS está perfeito, nenhuma mudança necessária aqui */
   header {
     background-color: var(--color-text-light);
     border-bottom: 1px solid #e2e8f0;
@@ -40,19 +45,26 @@ const base = import.meta.env.BASE_URL;
   .user-actions {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
   
-  .user-actions a {
+  .social-icon {
     color: var(--color-primary); 
     text-decoration: none;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease;
   }
-  .user-actions a:hover {
+  .social-icon:hover {
     opacity: 0.7; 
+    transform: scale(1.1);
   }
-  .material-symbols-outlined {
-    font-size: 28px;
+
+  .social-icon svg {
+    width: 24px;
+    height: 24px;
     vertical-align: middle;
+    fill: currentColor;
+  }
+   .shopee-icon svg {
+    transform: translateY(-2px); /* Ajuste o valor conforme necessário */
   }
 </style>
