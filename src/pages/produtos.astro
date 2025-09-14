@@ -1,40 +1,167 @@
 ---
 import Layout from '../layouts/layout.astro';
 import Header from '../components/layout/Header.astro';
+import ProductCard from '../components/products/ProductCard.astro';
+import { products } from '../components/data/products.js'; // Verifique se este caminho está correto para sua estrutura
+
+const productsWithImages = products;
 ---
+
 <Layout>
   <Header />
   <section class="page-hero">
     <h1>Produtos</h1>
   </section>
-  <main class="page-maintenance">
-    <p>Em manutenção, volte novamente mais tarde.</p>
+  <main class="produtos-container">
+    <div class="produtos-flex">
+      <aside class="produtos-sidebar">
+        <form class="produtos-filtros">
+          <div class="filtro-bloco">
+            <label for="busca-produto" class="filtro-label">Buscar</label>
+            <input id="busca-produto" type="text" class="filtro-input" placeholder="Buscar produtos..." />
+          </div>
+          <div class="filtro-bloco">
+            <span class="filtro-label">Tipo de Produto</span>
+            <div class="filtro-checkboxes">
+              <label><input type="checkbox" /> Booster Pack</label>
+              <label><input type="checkbox" /> Carta Avulsa</label>
+              <label><input type="checkbox" /> Box / Lata</label>
+              <label><input type="checkbox" /> Acessórios</label>
+            </div>
+          </div>
+          <div class="filtro-bloco">
+            <span class="filtro-label">Coleção</span>
+            <div class="filtro-checkboxes">
+              <label><input type="checkbox" /> Rivais Predestinados</label>
+              <label><input type="checkbox" /> Outras Coleções</label>
+            </div>
+          </div>
+          <div class="filtro-bloco">
+            <span class="filtro-label">Faixa de Preço</span>
+            <div class="filtro-checkboxes">
+              <label><input type="checkbox" /> Até R$ 20</label>
+              <label><input type="checkbox" /> R$ 21 - R$ 50</label>
+              <label><input type="checkbox" /> R$ 51 - R$ 100</label>
+              <label><input type="checkbox" /> Acima de R$ 100</label>
+            </div>
+          </div>
+          <button type="submit" class="filtro-aplicar">Aplicar Filtros</button>
+        </form>
+      </aside>
+      <section class="produtos-lista">
+        {productsWithImages.map(product => (
+          <ProductCard product={product} />
+        ))}
+      </section>
+    </div>
   </main>
 </Layout>
+
 <style>
 .page-hero {
-  background: #eceff1;
+  background: linear-gradient(120deg, #ff6a36 0%, #d7263d 100%);
   padding: 3rem 0 2rem 0;
   text-align: center;
+  box-shadow: 0 4px 24px 0 rgba(252, 74, 26, 0.08);
 }
 .page-hero h1 {
   font-family: var(--font-body);
   font-size: 2.5rem;
-  color: var(--color-dark);
+  color: #fff;
   font-weight: 700;
   margin: 0;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
-.page-maintenance {
-  min-height: 40vh;
+.produtos-container {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.produtos-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2.5rem;
+}
+.produtos-sidebar {
+  width: 260px;
+  background: #fff;
+  border-radius: 1.1rem;
+  box-shadow: 0 2px 12px 0 rgba(44,62,80,0.07);
+  border: 1.5px solid #fc4a1a18;
+  padding: 2rem 1.2rem 1.5rem 1.2rem;
+  flex-shrink: 0;
+}
+.produtos-filtros {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-body);
-  color: var(--color-dark);
+  gap: 1.5rem;
 }
-.page-maintenance p {
-  font-size: 1.2rem;
-  color: var(--color-primary);
+.filtro-bloco {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.filtro-label {
+  font-weight: 600;
+  color: #d7263d;
+  font-size: 1.05rem;
+}
+.filtro-input {
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.5rem;
+  border: 1.2px solid #ececec;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+.filtro-input:focus {
+  border: 1.2px solid #fc4a1a;
+}
+.filtro-checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.98rem;
+}
+.filtro-aplicar {
+  margin-top: 1.2rem;
+  padding: 0.7rem 1.2rem;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 0.7rem;
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+.filtro-aplicar:hover {
+  background: #d7263d;
+}
+.produtos-lista {
+  flex-grow: 1;
+  display: grid;
+  /* ✅ A REGRA MAIS IMPORTANTE PARA O ALINHAMENTO ✅ */
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 2rem;
+  align-items: start; /* Troque de 'stretch' para 'start' */
+  width: 100%;
+}
+@media (max-width: 900px) {
+  .produtos-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+  .produtos-sidebar {
+    width: 100%;
+    max-width: 500px;
+    min-width: 0;
+    margin-bottom: 1.5rem;
+  }
+  .produtos-lista {
+    justify-content: center;
+    width: 100%;
+  }
 }
 </style>
