@@ -1,23 +1,27 @@
 export const products = [
   {
+    id: 100,
+    name: "Meowth da Equipe Rocket",
+    description: "Carta promocional rara do Meowth da Equipe Rocket.",
+    image: "images/meowth.jpg", // <--- CORRIGIDO
+    price: "R$ 65,00",
+    link: "https://shopee.com.br/product/432327414/22898902348/",
+    estoque: 1
+  },
+  {
     id: 1,
-    name: "Produto Incrível 1",
+    name: "Spidops da Equipe Rocket",
     description: "Uma descrição breve e vendedora sobre os benefícios deste produto maravilhoso.",
-    image: "/images/produto-1.jpg", // Caminho para a imagem na pasta `public/images`
-    link: "https://shopee.com.br/SEU_LINK_PARA_O_PRODUTO_1" // Link direto para a Shopee
+    image: "images/spidops.jpg", // Caminho para a imagem na pasta `public/images`
+    link: "https://shopee.com.br/bigowl_tcgstore#product_list", // Link direto para a Shopee
+    estoque: 0
   },
   {
     id: 2,
-    name: "Produto Fantástico 2",
+    name: "Goku Black",
     description: "Ideal para resolver o problema X, com a qualidade e design que você procura.",
-    image: "/images/produto-2.jpg",
-    link: "https://shopee.com.br/SEU_LINK_PARA_O_PRODUTO_2"
+    image: "images/dbz-gokublack.webp",
+    link: "https://shopee.com.br/bigowl_tcgstore#product_list",
+    estoque: 0
   },
-  {
-    id: 3,
-    name: "Produto Essencial 3",
-    description: "Não pode faltar no seu dia a dia. Garante mais praticidade e estilo.",
-    image: "/images/produto-3.jpg",
-    link: "https://shopee.com.br/SEU_LINK_PARA_O_PRODUTO_3"
-  }
 ];

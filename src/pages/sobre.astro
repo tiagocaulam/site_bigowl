@@ -4,37 +4,409 @@ import Header from '../components/layout/Header.astro';
 ---
 <Layout>
   <Header />
-  <section class="page-hero">
+  <section class="page-hero gradient-bg">
     <h1>Sobre Nós</h1>
   </section>
-  <main class="page-maintenance">
-    <p>Em manutenção, volte novamente mais tarde.</p>
+  <main class="sobre-container">
+    <img src="/images/pokebola_esquerda.png" alt="Pokebola esquerda" class="pokeball-canto pokeball-canto-esq" />
+    <img src="/images/pokebola_esquerda.png" alt="Pokebola direita" class="pokeball-canto pokeball-canto-dir" />
+    <div class="sobre-flex">
+      <div class="sobre-card-central">
+        <div class="sobre-textos">
+          <h2 class="sobre-titulo">Quem somos?</h2>
+          <p>
+            <span class="sobre-destaque">Olá! Meu nome é Tiago</span>, sou criador de conteúdo e colecionador apaixonado por <span class="sobre-tcg">TCGs</span> como <span class="sobre-pokemon">Pokémon</span>, <span class="sobre-dragonball">Dragon Ball</span> e <span class="sobre-onepiece">One Piece</span>.<br />
+            Compartilhar a empolgação de abrir boosters, descobrir cartas raras e conversar sobre o universo dos TCGs se tornou parte da minha rotina e paixão.
+          </p>
+          <p>
+            Foi dessa paixão que nasceu a vontade de criar a <span class="sobre-loja">Big Owl TCG Store</span>: um espaço para levar essa mesma empolgação e alegria para outras pessoas. Aqui, quero proporcionar a mesma experiência incrível que sinto ao abrir cartas, ajudando outros colecionadores e fãs a expandirem suas coleções e se divertirem tanto quanto eu.
+          </p>
+          <p class="sobre-boasvindas">
+            Seja bem-vindo(a) à nossa loja! Sinta-se à vontade para explorar, colecionar e compartilhar esse hobby incrível conosco.
+          </p>
+          <div class="sobre-elemento">
+            <span>✨ Colecione momentos, não só cartas! ✨</span>
+          </div>
+        </div>
+      </div>
+      <div class="sobre-imagens">
+        <div class="sobre-collage">
+          <img src="/images/dbz-gokublack.webp" alt="Foto 1" class="collage-img collage-img-1" />
+          <img src="/images/op-tcg.webp" alt="Foto 2" class="collage-img collage-img-2" />
+          <img src="/images/logo-raio-preto.png" alt="Foto 3" class="collage-img collage-img-3" />
+          <img src="/images/logo-rivais-predestinados.jpg" alt="Foto 4" class="collage-img collage-img-4" />
+        </div>
+        <img src="/images/logo-big-owl.png" alt="Logo Big Owl" class="sobre-logo" />
+        <div class="sobre-cards">
+          <img src="/images/pokemon-tcg-logo.png" alt="Pokémon TCG" class="sobre-card-img" />
+          <img src="/images/logo-mega-evolution.png" alt="Dragon Ball TCG" class="sobre-card-img" />
+          <img src="/images/logo-raio-preto-branco.png" alt="One Piece TCG" class="sobre-card-img" />
+        </div>
+      </div>
+    </div>
+    <div class="sobre-bg-spiral"></div>
   </main>
+<style>
+.sobre-card-central {
+  background: #fff;
+  border-radius: 1.1rem;
+  box-shadow: 0 2px 12px 0 rgba(252, 74, 26, 0.10);
+  border: 1.5px solid #fc4a1a18;
+  padding: 2.1rem 2.2rem 1.5rem 2.2rem;
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 0.8s cubic-bezier(.39,.575,.565,1) both;
+  margin: 0.5rem 0;
+}
+.pokeball-canto {
+  position: absolute;
+  width: 600px;
+  height: auto;
+  aspect-ratio: 820/426;
+  opacity: 0.13;
+  z-index: 0;
+  pointer-events: none;
+  max-width: none;
+  min-width: 300px;
+  transition: width 0.2s;
+}
+.pokeball-canto-esq {
+  top: 40px;
+  left: -320px;
+}
+.pokeball-canto-dir {
+  bottom: 40px;
+  right: -320px;
+}
+@media (max-width: 700px) {
+  .pokeball-canto {
+    width: 220px;
+    min-width: 80px;
+    max-width: none;
+    height: auto;
+    aspect-ratio: 820/426;
+  }
+  .pokeball-canto-esq {
+    top: 20px;
+    left: -120px;
+  }
+  .pokeball-canto-dir {
+    bottom: 20px;
+    right: -120px;
+  }
+}
+</style>
 </Layout>
 <style>
-.page-hero {
-  background: #eceff1;
+/* Gradiente de fundo para a hero section */
+.gradient-bg {
+  background: linear-gradient(120deg, #ff6a36 0%, #d7263d 100%);
   padding: 3rem 0 2rem 0;
   text-align: center;
+  box-shadow: 0 4px 24px 0 rgba(252, 74, 26, 0.08);
 }
 .page-hero h1 {
   font-family: var(--font-body);
-  font-size: 2.5rem;
-  color: var(--color-dark);
-  font-weight: 700;
+  font-size: 2.8rem;
+  color: #fff;
+  font-weight: 800;
   margin: 0;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
-.page-maintenance {
-  min-height: 40vh;
+
+
+.sobre-container {
+  min-height: 60vh;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 2.5rem 1rem 3rem 1rem;
+  background: linear-gradient(120deg, #ece9e6 0%, #ffffff 100%);
+  overflow: hidden;
+}
+
+.sobre-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  width: 100%;
+  max-width: 1100px;
+  z-index: 2;
+  animation: fadeInUp 0.8s cubic-bezier(.39,.575,.565,1) both;
+}
+
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.1rem;
   font-family: var(--font-body);
   color: var(--color-dark);
+  font-size: 1.18rem;
+  line-height: 1.7;
+  max-width: 600px;
+  width: 100%;
+  background: #fff8f3cc;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 12px 0 rgba(252, 74, 26, 0.04);
+  border: 1.5px solid #fc4a1a18;
+  padding: 2.1rem 2.2rem 1.5rem 2.2rem;
+  margin: 0.5rem 0;
+.sobre-imagens {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  position: relative;
 }
-.page-maintenance p {
-  font-size: 1.2rem;
-  color: var(--color-primary);
+
+.sobre-collage {
+  width: 260px;
+  height: 320px;
+  position: relative;
+  margin-bottom: 1.2rem;
+}
+.collage-img {
+  position: absolute;
+  object-fit: cover;
+  border-radius: 1.1rem;
+  box-shadow: 0 2px 12px 0 rgba(44,62,80,0.13);
+  border: 2px solid #fff;
+  background: #eceff1;
+  transition: transform 0.18s;
+}
+.collage-img-1 {
+  width: 120px;
+  height: 80px;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  transform: rotate(-7deg);
+}
+.collage-img-2 {
+  width: 110px;
+  height: 120px;
+  top: 40px;
+  right: 0;
+  z-index: 3;
+  transform: rotate(6deg);
+}
+.collage-img-3 {
+  width: 130px;
+  height: 90px;
+  bottom: 0;
+  left: 10px;
+  z-index: 1;
+  transform: rotate(4deg);
+}
+.collage-img-4 {
+  width: 90px;
+  height: 70px;
+  bottom: 30px;
+  right: 10px;
+  z-index: 4;
+  transform: rotate(-10deg);
+}
+.collage-img:hover {
+  transform: scale(1.06) rotate(-2deg);
+  z-index: 10;
+}
+@media (max-width: 900px) {
+  .sobre-collage {
+    width: 98vw;
+    max-width: 220px;
+    height: 180px;
+  }
+  .collage-img-1 {
+    width: 70px;
+    height: 40px;
+  }
+  .collage-img-2 {
+    width: 60px;
+    height: 60px;
+    top: 20px;
+  }
+  .collage-img-3 {
+    width: 80px;
+    height: 45px;
+    left: 5px;
+  }
+  .collage-img-4 {
+    width: 50px;
+    height: 35px;
+    right: 5px;
+    bottom: 10px;
+  }
+/* chave extra removida aqui */
+}
+
+.sobre-titulo {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fc4a1a;
+  margin-bottom: 3.0rem;
+  letter-spacing: 1px;
+}
+
+.sobre-elemento {
+  margin-top: 1.2rem;
+  background: #f7b73322;
+  color: #fc4a1a;
+  font-weight: 700;
+  padding: 0.7rem 1.2rem;
+  border-radius: 1.2rem;
+  font-size: 1.08em;
+  box-shadow: 0 2px 8px 0 rgba(252, 74, 26, 0.08);
+}
+
+.sobre-imagens {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.sobre-logo {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 2px 8px rgba(44,62,80,0.10));
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #fc4a1a33;
+}
+
+.sobre-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 1.1rem;
+  margin-top: 0.5rem;
+}
+.sobre-card-img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 2px 12px 0 rgba(44,62,80,0.10);
+  border: 2px solid #eceff1;
+  transition: transform 0.2s;
+}
+.sobre-card-img:hover {
+  transform: scale(1.08) rotate(-3deg);
+  box-shadow: 0 4px 18px 0 rgba(252, 74, 26, 0.13);
+}
+
+.sobre-bg-spiral {
+  position: absolute;
+  right: -120px;
+  bottom: -80px;
+  width: 340px;
+  height: 340px;
+  background: url('/square-spiral/public/favicon.svg') no-repeat center center/contain;
+  opacity: 0.08;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .sobre-flex {
+    flex-direction: column;
+    gap: 2.2rem;
+    align-items: center;
+  }
+  .sobre-imagens {
+    flex-direction: row;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  .sobre-logo {
+    width: 80px;
+    height: 80px;
+  }
+  .sobre-card-img {
+    width: 55px;
+    height: 55px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sobre-container {
+    padding: 1.2rem 0.2rem 2rem 0.2rem;
+  }
+  .sobre-titulo {
+    font-size: 1.3rem;
+  }
+  .sobre-textos {
+    font-size: 1rem;
+    max-width: 98vw;
+    padding: 1.1rem 0.7rem 1rem 0.7rem;
+  }
+  .sobre-logo {
+    width: 55px;
+    height: 55px;
+  }
+  .sobre-card-img {
+    width: 38px;
+    height: 38px;
+  }
+  .sobre-bg-spiral {
+    width: 160px;
+    height: 160px;
+    right: -40px;
+    bottom: -30px;
+  }
+}
+
+.sobre-destaque,
+.sobre-tcg,
+.sobre-pokemon,
+.sobre-dragonball,
+.sobre-onepiece,
+.sobre-loja,
+.sobre-boasvindas {
+  color: #fc4a1a;
+  font-weight: 700;
+  font-size: 1.08em;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 700px) {
+  .sobre-card {
+    padding: 1.2rem 0.5rem 1.5rem 0.5rem;
+    max-width: 98vw;
+  }
+  .page-hero h1 {
+    font-size: 2rem;
+  }
+  .sobre-logo {
+    width: 65px;
+    height: 65px;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>

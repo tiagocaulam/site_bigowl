@@ -7,34 +7,379 @@ import Header from '../components/layout/Header.astro';
   <section class="page-hero">
     <h1>Contatos</h1>
   </section>
-  <main class="page-maintenance">
-    <p>Em manutenção, volte novamente mais tarde.</p>
+  <main class="contato-container">
+    <img src="/images/pokebola_esquerda.png" alt="Pokebola esquerda" class="pokeball-canto pokeball-canto-esq" />
+    <img src="/images/pokebola_esquerda.png" alt="Pokebola direita" class="pokeball-canto pokeball-canto-dir" />
+    <div class="contato-card-central">
+      <h2 class="contato-titulo">
+        <span class="contato-titulo-icone">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="20" viewBox="0 0 32 20" fill="none" style="vertical-align:middle;">
+            <circle cx="9" cy="10" r="7" fill="#fff" stroke="#fc4a1a" stroke-width="2"/>
+            <circle cx="23" cy="10" r="7" fill="#fff" stroke="#fc4a1a" stroke-width="2"/>
+            <circle cx="9" cy="10" r="3" fill="#222"/>
+            <circle cx="23" cy="10" r="3" fill="#222"/>
+          </svg>
+        </span>
+        Fale com a Big Owl
+      </h2>
+      <ul class="contato-lista">
+        <li>
+          <span class="contato-icone">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24" fill="#fc4a1a"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </span>
+          <span class="contato-label">E-mail</span>
+          <a href="mailto:contatobigowl@gmail.com" class="contato-link">contatobigowl@gmail.com</a>
+        </li>
+        <li>
+          <span class="contato-icone">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24" fill="#fc4a1a"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </span>
+          <span class="contato-label">Endereço</span>
+          Fortaleza (atendimento online)
+        </li>
+        <li>
+          <span class="contato-icone">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24" fill="#fc4a1a"><path d="M7 18c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v8c0 1.1-.9 2-2 2H7zm0-2h10V8H7v8zm2-7h6v2H9V9zm0 4h6v2H9v-2z"/></svg>
+          </span>
+          <span class="contato-label">fale conosco na Shopee</span>
+          <a href="https://shopee.com.br/bigowlstore" target="_blank" rel="noopener" class="contato-link">
+            Shopee
+          </a>
+        </li>
+        <li>
+          <span class="contato-icone">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24" fill="#fc4a1a"><path d="M12 8V4l8 8-8 8v-4.1C7.1 15.9 4 13.1 4 9.5c0-1.6.6-3.1 1.7-4.2C7.9 3.6 9.4 3 11 3c.6 0 1.2.1 1.7.3C13.1 3.6 13.6 4 14 4.5c.4.5.7 1.1.7 1.7 0 1.1-.9 2-2 2z"/></svg>
+          </span>
+          <span class="contato-label">Atendimento</span>
+          8h às 18h, segunda a sexta
+        </li>
+      </ul>
+      <div class="contato-info-extra">
+        Atendimento exclusivo online. Tire dúvidas ou envie sugestões pelo e-mail ou Shopee!
+      </div>
+    </div>
+    <div class="contato-bg-spiral"></div>
   </main>
 </Layout>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 <style>
 .page-hero {
-  background: #eceff1;
+  background: linear-gradient(120deg, #ff6a36 0%, #d7263d 100%);
   padding: 3rem 0 2rem 0;
   text-align: center;
+  box-shadow: 0 4px 24px 0 rgba(252, 74, 26, 0.08);
 }
 .page-hero h1 {
   font-family: var(--font-body);
   font-size: 2.5rem;
-  color: var(--color-dark);
+  color: #fff;
   font-weight: 700;
   margin: 0;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
-.page-maintenance {
-  min-height: 40vh;
+
+
+.contato-container {
+  min-height: 60vh;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-body);
-  color: var(--color-dark);
+  padding: 2.5rem 1rem 3rem 1rem;
+  background: linear-gradient(120deg, #ece9e6 0%, #ffffff 100%);
+  overflow: hidden;
 }
-.page-maintenance p {
-  font-size: 1.2rem;
-  color: var(--color-primary);
+
+
+.contato-card-central {
+  margin: 2.5rem auto 0 auto;
+  background: #fff;
+  border-radius: 1.1rem;
+  box-shadow: 0 2px 12px 0 rgba(252, 74, 26, 0.10);
+  border: 1.5px solid #fc4a1a18;
+  padding: 2.1rem 2.2rem 1.5rem 2.2rem;
+  max-width: 420px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  animation: fadeInUp 0.8s cubic-bezier(.39,.575,.565,1) both;
+}
+
+.contato-titulo {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #fc4a1a;
+  margin-bottom: 2.0rem;
+  margin-top: -0.7rem;
+  letter-spacing: 0.5px;
+  text-align: center;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  line-height: 1.1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.contato-titulo-icone {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 0.2em;
+}
+
+
+.contato-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  align-items: flex-start;
+}
+.contato-lista li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.05rem;
+  color: var(--color-dark);
+  font-weight: 400;
+  justify-content: flex-start;
+}
+.contato-icone {
+  font-size: 1.2em;
+  color: #fc4a1a;
+  min-width: 1.7em;
+  text-align: center;
+}
+.contato-label {
+  font-weight: 500;
+  color: #fc4a1a;
+  margin-right: 0.2em;
+}
+.contato-link {
+  color: #d7263d;
+  text-decoration: underline;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.contato-link:hover {
+  color: #fc4a1a;
+}
+.contato-info-extra {
+  margin-top: 2.2rem;
+  background: #f7b73322;
+  color: #fc4a1a;
+  font-weight: 400;
+  padding: 0.6rem 1rem;
+  border-radius: 0.9rem;
+  font-size: 0.98em;
+  box-shadow: 0 2px 8px 0 rgba(252, 74, 26, 0.08);
+  text-align: center;
+}
+
+.contato-imagens {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  position: relative;
+}
+.contato-logo {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 2px 8px rgba(44,62,80,0.10));
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #fc4a1a33;
+}
+.contato-collage {
+  width: 260px;
+  height: 180px;
+  position: relative;
+  margin-bottom: 1.2rem;
+}
+.contato-collage-img {
+  position: absolute;
+  object-fit: cover;
+  border-radius: 1.1rem;
+  box-shadow: 0 2px 12px 0 rgba(44,62,80,0.13);
+  border: 2px solid #fff;
+  background: #eceff1;
+  transition: transform 0.18s;
+}
+.contato-collage-img-1 {
+  width: 120px;
+  height: 80px;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  transform: rotate(-7deg);
+}
+.contato-collage-img-2 {
+  width: 110px;
+  height: 90px;
+  top: 40px;
+  right: 0;
+  z-index: 3;
+  transform: rotate(6deg);
+}
+.contato-collage-img-3 {
+  width: 130px;
+  height: 70px;
+  bottom: 0;
+  left: 10px;
+  z-index: 1;
+  transform: rotate(4deg);
+}
+.contato-collage-img:hover {
+  transform: scale(1.06) rotate(-2deg);
+  z-index: 10;
+}
+.contato-bg-spiral {
+  position: absolute;
+  right: -120px;
+  bottom: -80px;
+  width: 340px;
+  height: 340px;
+  background: url('/square-spiral/public/favicon.svg') no-repeat center center/contain;
+  opacity: 0.08;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .contato-flex {
+    flex-direction: column;
+    gap: 2.2rem;
+    align-items: center;
+  }
+  .contato-imagens {
+    flex-direction: row;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  .contato-logo {
+    width: 80px;
+    height: 80px;
+  }
+  .contato-collage {
+    width: 98vw;
+    max-width: 220px;
+    height: 120px;
+  }
+  .contato-collage-img-1 {
+    width: 70px;
+    height: 40px;
+  }
+  .contato-collage-img-2 {
+    width: 60px;
+    height: 50px;
+    top: 20px;
+  }
+  .contato-collage-img-3 {
+    width: 80px;
+    height: 35px;
+    left: 5px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contato-container {
+    padding: 1.2rem 0.2rem 2rem 0.2rem;
+  }
+  .contato-titulo {
+    font-size: 1.3rem;
+  }
+  .contato-textos {
+    font-size: 1rem;
+    max-width: 98vw;
+    padding: 1.1rem 0.7rem 1rem 0.7rem;
+  }
+  .contato-logo {
+    width: 55px;
+    height: 55px;
+  }
+  .contato-collage {
+    width: 98vw;
+    max-width: 120px;
+    height: 60px;
+  }
+  .contato-collage-img-1 {
+    width: 38px;
+    height: 20px;
+  }
+  .contato-collage-img-2 {
+    width: 30px;
+    height: 25px;
+    top: 10px;
+  }
+  .contato-collage-img-3 {
+    width: 40px;
+    height: 18px;
+    left: 3px;
+  }
+  .contato-bg-spiral {
+    width: 160px;
+    height: 160px;
+    right: -40px;
+    bottom: -30px;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+<style>
+.pokeball-canto {
+  position: absolute;
+  width: 600px;
+  height: auto;
+  aspect-ratio: 820/426;
+  opacity: 0.13;
+  z-index: 0;
+  pointer-events: none;
+  max-width: none;
+  min-width: 300px;
+  transition: width 0.2s;
+}
+.pokeball-canto-esq {
+  top: 40px;
+  left: -270px;
+}
+.pokeball-canto-dir {
+  bottom: 40px;
+  right: -270px;
+}
+@media (max-width: 700px) {
+  .pokeball-canto {
+    width: 220px;
+    min-width: 80px;
+    max-width: none;
+    height: auto;
+    aspect-ratio: 820/426;
+  }
+  .pokeball-canto-esq {
+    top: 20px;
+    left: -120px;
+  }
+  .pokeball-canto-dir {
+    bottom: 20px;
+    right: -120px;
+  }
 }
 </style>
