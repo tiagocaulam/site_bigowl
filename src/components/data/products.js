@@ -4,7 +4,7 @@ export const products = [
     name: "Meowth da Equipe Rocket",
     description: "Carta promocional rara do Meowth da Equipe Rocket.",
     image: "images/meowth.jpg", // <--- CORRIGIDO
-    price: "R$ 65,00",
+    price: "R$ 75,00",
     link: "https://shopee.com.br/product/432327414/22898902348/",
     estoque: 1
   },
