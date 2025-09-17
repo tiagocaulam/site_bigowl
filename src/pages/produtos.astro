@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/layout.astro';
 import Header from '../components/layout/Header.astro';
-import ProductCard from '../components/products/ProductCard.astro';
+import PokemonCard from '../components/products/PokemonCard.astro';
 import { products } from '../components/data/products.js'; // Verifique se este caminho está correto para sua estrutura
 
 const productsWithImages = products;
@@ -38,6 +38,8 @@ const productsWithImages = products;
           </div>
           <div class="filtro-bloco">
             <span class="filtro-label">Faixa de Preço</span>
+      <!-- Exibe carta Zamazenta pesquisada via API -->
+      <!-- Removido da sidebar, será exibido na área principal -->
             <div class="filtro-checkboxes">
               <label><input type="checkbox" /> Até R$ 20</label>
               <label><input type="checkbox" /> R$ 21 - R$ 50</label>
@@ -48,10 +50,17 @@ const productsWithImages = products;
           <button type="submit" class="filtro-aplicar">Aplicar Filtros</button>
         </form>
       </aside>
-      <section class="produtos-lista">
-        {productsWithImages.map(product => (
+      <section class="produtos-lista" style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: flex-start;">
+        <PokemonCard name="Zamazenta" number="201" set="Destined Rivals" />
+        <PokemonCard name="Team Rocket's Spidops" number="187" set="Destined Rivals" />
+        <PokemonCard name="Gothita" number="124" set="White Flare" />
+        <PokemonCard name="Yanmega ex" number="228" set="Destined Rivals" />
+        <PokemonCard name="Team Rocket's Houndoom" number="191" set="Destined Rivals" />
+        <PokemonCard name="Team Rocket's Petrel" number="226" set="Destined Rivals" />
+        <!-- Aqui você pode reativar a listagem de produtos se quiser -->
+        <!-- {productsWithImages.map(product => (
           <ProductCard product={product} />
-        ))}
+        ))} -->
       </section>
     </div>
   </main>
