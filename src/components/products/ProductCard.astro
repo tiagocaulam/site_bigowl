@@ -1,54 +1,160 @@
 ---
+// src/components/products/ProductCard.astro
 const { product } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
-
-<div class="card">
-  <img src={product.image} alt={`Imagem do ${product.name}`} />
-  <div class="card-content">
-    <h2>{product.name}</h2>
-    <p>{product.description}</p>
-    <a href={product.link} target="_blank" rel="noopener noreferrer" class="buy-button">
-      Ver na Shopee
-    </a>
+<a href={product.link} target="_blank" rel="noopener noreferrer" class="card-link">
+  <div class="card">
+    <div class="card-img-wrapper">
+      <img src={`${base}${product.image}`} alt={`Imagem do ${product.name}`} />
+    </div>
+    <div class="card-body">
+      <div class="card-content">
+        <div class="card-title">{product.name}</div>
+        <div class="card-details">
+          <span class="card-price">{product.price}</span>
+          <span class:list={["card-estoque", product.estoque > 0 ? 'in-stock' : 'out-of-stock']}>
+            {product.estoque > 0 ? `${product.estoque} em estoque` : 'Sem estoque'}
+          </span>
+        </div>
+      </div>
+      <div class:list={["btn-comprar", { 'is-disabled': product.estoque === 0 }]}>
+        <svg class="icon-loja" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-6h15L21 9"/><path d="M3 9h18v2a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9z"/><path d="M16 13v6"/><path d="M8 13v6"/></svg>
+        <span>{product.estoque > 0 ? 'Comprar' : 'Sem estoque'}</span>
+      </div>
+    </div>
   </div>
-</div>
+</a>
 
 <style>
-.card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
+.card-link {
+  display: flex;
+  flex-direction: column;
+  /* --- MUDANÇA PRINCIPAL AQUI --- */
+  width: 100%; /* O card agora ocupa 100% da coluna do grid onde ele estiver */
+  /* As larguras fixas de 230px foram removidas */
+  
+  height: 390px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.07);
+  transition: all 0.25s ease-in-out;
+  text-decoration: none;
 }
-.card:hover {
+.card-link:hover {
   transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  border-color: var(--color-primary);
 }
-.card img {
+/* ... O restante do seu CSS para o card continua o mesmo ... */
+.card {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.card-img-wrapper {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.card-img-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.25s ease-in-out;
+}
+.card-link:hover .card-img-wrapper img {
+  transform: scale(1.05);
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; 
+  padding: 0.75rem 1rem 1rem 1rem;
 }
 .card-content {
-  padding: 1rem;
+  flex-grow: 1;
 }
-.card-content h2 {
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.4;
+  min-height: 2.8em; 
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.card-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+.card-price {
   font-size: 1.25rem;
-  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  color: var(--color-primary);
 }
-.buy-button {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
-  background-color: #2563eb;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-  text-align: center;
-  transition: background-color 0.2s;
+.card-estoque {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  text-transform: uppercase;
 }
-.buy-button:hover {
-  background-color: #1d4ed8;
+.in-stock {
+  background-color: #dcfce7;
+  color: #166534;
+}
+.out-of-stock {
+  background-color: #f3f4f6;
+  color: #4b5563;
+}
+.btn-comprar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.7rem 0;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  gap: 0.5em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+.btn-comprar:hover {
+  background-color: #b91c1c;
+}
+.icon-loja {
+  stroke: #fff;
+  stroke-width: 2.5;
+}
+.is-out-of-stock {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.is-out-of-stock .card-img-wrapper img {
+  filter: grayscale(100%);
+}
+.is-out-of-stock .btn-comprar {
+  background-color: #9ca3af;
+  cursor: not-allowed;
 }
 </style>

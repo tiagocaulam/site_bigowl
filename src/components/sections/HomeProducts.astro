@@ -1,0 +1,82 @@
+---
+import { products } from '../data/products.js';
+import ProductCard from '../products/ProductCard.astro';
+import Button from '../ui/Button.astro'; // 1. Importamos o componente de botão
+const base = import.meta.env.BASE_URL;
+---
+<section class="home-products pokebola-bg">
+  <div class="container">
+    <h2>Nossos produtos</h2>
+    <p class="home-products__desc">Descubra nosso catálogo de produtos totalmente oficiais de Pokémon</p>
+    <div class="home-products-lista">
+      {products.slice(0, 4).map(product => (
+        <ProductCard product={product} />
+      ))}
+    </div>
+    
+    <div class="view-all-wrapper">
+      <Button href={`${base}produtos/`} text="Ver todos os produtos" variant="primary" />
+    </div>
+  </div>
+</section>
+
+<style>
+.home-products {
+  padding: 2rem 0;
+  text-align: center;
+}
+.home-products h2 {
+  font-size: 2.5rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 0.5rem;
+}
+.home-products__desc {
+  color: #555;
+  font-size: 1.15rem;
+  margin-bottom: 3rem;
+}
+.home-products-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 2rem;
+  align-items: start; /* Impede de esticar verticalmente */
+  justify-items: center;
+}
+.view-all-wrapper {
+  margin-top: 3rem;
+}
+/* Pokebola BG */
+.pokebola-bg {
+  position: relative;
+  overflow: hidden;
+}
+.pokebola-bg::before {
+  content: '';
+  position: absolute;
+  left: -250px;
+  top: -80px;
+  width: 640px;
+  height: 640px;
+  background: url('/images/pokebola_esquerda.png') no-repeat center center/contain;
+  opacity: 0.1;
+  z-index: 0;
+}
+.pokebola-bg::after {
+  content: '';
+  position: absolute;
+  right: -120px;
+  bottom: -100px;
+  width: 540px;
+  height: 540px;
+  background: url('/images/pokebola_esquerda.png') no-repeat center center/contain;
+  opacity: 0.1;
+  z-index: 0;
+  transform: scaleX(-1);
+}
+.home-products .container, .home-products-lista, .view-all-wrapper {
+  position: relative;
+  z-index: 1;
+}
+</style>

@@ -1,0 +1,100 @@
+---
+// src/components/layout/Footer.astro
+const currentYear = new Date().getFullYear();
+const base = import.meta.env.BASE_URL;
+
+const footerLinks = [
+  { href: `${base}`, text: "Home" },
+  { href: `${base}produtos/`, text: "Produtos" },
+  { href: `${base}sobre/`, text: "Sobre Nós" },
+  { href: `${base}contatos/`, text: "Contatos" },
+];
+---
+<footer class="footer">
+  <div class="container footer-content">
+    <div class="footer__social">
+      <a href="#" aria-label="Youtube" class="footer__icon">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+      </a>
+      <a href="#" aria-label="Instagram" class="footer__icon">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.266.058 1.77.218 2.368.455.6.236 1.05.55 1.516 1.016.466.466.78 1.016 1.016 1.616.236.6.4 1.102.455 2.368.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.055 1.266-.22 1.77-.455 2.368-.236.6-.55 1.05-1.016 1.516-.466.466-1.016.78-1.616 1.016-.6.236-1.102.4-2.368.455-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.266-.055-1.77-.22-2.368-.455-.6-.236-1.05-.55-1.516-1.016-.466-.466-.78-1.016-1.016-1.616-.236-.6-.4-1.102-.455-2.368C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.055-1.266.22-1.77.455-2.368.236-.6.55-1.05 1.016-1.516.466.466 1.016-.78 1.616-1.016.6-.236 1.102-.4 2.368.455C8.416 2.175 8.796 2.163 12 2.163m0-2.163C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.784.3-1.448.747-2.12 1.42S.93 3.354.63 4.137c-.3.765-.5 1.635-.558 2.913C.015 8.333 0 8.74 0 12s.015 3.667.072 4.947c.058 1.277.258 2.148.558 2.913.3.784.747 1.448 1.42 2.12.67.673 1.335 1.12 2.12 1.42.765.3 1.635.5 2.913.558C8.333 23.985 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.058 2.148-.258 2.913-.558.784-.3 1.448-.747 2.12-1.42.673-.67 1.12-1.335 1.42-2.12.3-.765.5-1.635.558-2.913.057-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.058-1.277-.258-2.148-.558-2.913-.3-.784-.747-1.448-1.42-2.12C20.647.93 20.002.484 19.22.18c-.765-.3-1.635-.5-2.913-.558C15.667.015 15.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"></path></svg>
+      </a>
+      </div>
+    <nav class="footer__nav">
+      {footerLinks.map(link => (
+        <a href={link.href}>{link.text}</a>
+      ))}
+    </nav>
+  </div>
+
+  <div class="footer__copy">
+    Copyright © {currentYear} <br> <span>BIG OWL</span> TCG Store 
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-dark);
+    color: var(--color-text-light);
+    font-family: var(--font-body);
+    box-shadow: 0 8px 24px 0 rgba(0,0,0,0.25);
+    padding-top: 2.5rem; /* Apenas padding no topo */
+    margin-top: 4rem;
+  }
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding-bottom: 2.5rem; /* Espaço até a barra de copyright */
+  }
+  .footer__social {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  .footer__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #222;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    color: var(--color-text-light);
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.15);
+  }
+  .footer__icon:hover {
+    background: var(--color-primary);
+    color: #fff;
+    transform: scale(1.1);
+  }
+  .footer__nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Adicionado para responsividade */
+    gap: 2.5rem;
+    font-size: 1rem; /* Ajustado */
+  }
+  .footer__nav a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer__nav a:hover {
+    color: var(--color-primary);
+  }
+  .footer__copy {
+    background: #000;
+    text-align: center;
+    padding: 1rem 1rem 0.75rem 1rem; /* Ajustado */
+    font-size: 0.9rem;
+    color: #888; /* Cor mais suave para o texto de copyright */
+    line-height: 1.5;
+  }
+  .footer__copy span {
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+</style>

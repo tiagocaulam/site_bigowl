@@ -1,36 +1,41 @@
 ---
-// src/components/sections/Hero.astro
 import Button from '../ui/Button.astro';
+// 1. Importamos a variável que contém o caminho base (ex: /site_bigowl/)
+const base = import.meta.env.BASE_URL;
 ---
 <section class="hero">
   <div class="container hero-container">
     <div class="hero-content">
-      <img src="/images/logo-raio-preto-branco.png" alt="Logo da Coleção" class="collection-logo" />
+      <img src={`${base}images/logo-raio-preto-branco.png`} alt="Logo da Coleção" class="collection-logo" />
       <h1>Nova coleção de Pokemon: Raio Preto e Fogo Branco!</h1>
       <p>Adiquira agora a nova coleção do Pokémon TCG. Temos packs avulsos, Blisters e ETBs prontos para você.</p>
       <div class="hero-buttons">
-        <Button href="/comprar" text="Comprar agora" variant="primary" />
-        <Button href="/colecoes" text="Visualizar as coleções" variant="secondary" />
+        <Button href="https://shopee.com.br/bigowl_tcgstore" text="Comprar agora" variant="primary" />
+        <Button href="https://tcg.pokemon.com/pt-br/all-expansions/" text="Visualizar as coleções" variant="secondary" />
+      </div>
+      <div class="shopee-info">
+        <img src={`${base}images/shopee-logo.png`} alt="Shopee" class="shopee-logo" />
+        <span >Estamos disponíveis na Shopee!</span>
       </div>
     </div>
     <div class="hero-image">
-      <img src="/images/pokemon-tcg-logo.png" alt="Pokémon Trading Card Game"/>
+      <img src={`${base}images/pokemon-tcg-logo.png`} alt="Pokémon Trading Card Game"/>
     </div>
   </div>
   <div class="bottom-logos">
-    <img src="/images/logo-mega-evolution.png" alt="Pokémon Logo"/>
-    <img src="/images/logo-rivais-predestinados.png" alt="Rivais Predestinados Logo"/>
-    <img src="/images/logo-raio-preto.png" alt="Raio Preto Logo"/>
-    <img src="/images/logo-fogo-branco.png" alt="Fogo Branco Logo"/>
+    <img src={`${base}images/logo-mega-evolution.png`} alt="Pokémon Logo"/>
+    <img src={`${base}images/logo-rivais-predestinados.png`} alt="Rivais Predestinados Logo"/>
+    <img src={`${base}images/logo-raio-preto.png`} alt="Raio Preto Logo"/>
+    <img src={`${base}images/logo-fogo-branco.png`} alt="Fogo Branco Logo"/>
   </div>
 </section>
 
-<style>
+<style define:vars={{ heroBg: `url(${base}images/hero-bg-pattern.png)` }}>
   .hero {
     background-color: var(--color-dark);
     color: var(--color-text-light);
     padding: 4rem 0 0 0;
-    background-image: url('/images/hero-bg-pattern.png');
+    background-image: var(--heroBg);
     background-size: cover;
     background-position: center;
     overflow: hidden; /* Garante que nada vaze para os lados */
@@ -96,6 +101,25 @@ import Button from '../ui/Button.astro';
     opacity: 1;
     transform: scale(1.15);
     cursor: pointer;
+  }
+  .shopee-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    font-size: 1.1rem;
+    color: #ffffff;
+    font-weight: 500;
+    width: fit-content;
+  }
+  .shopee-logo {
+    width: 2rem;
+    height: 2rem;
+    display: block;
   }
 
   /* --- MEDIA QUERY PARA RESPONSIVIDADE --- */
