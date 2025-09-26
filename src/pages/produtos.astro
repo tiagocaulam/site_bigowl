@@ -2,11 +2,22 @@
 import Layout from '../layouts/layout.astro';
 import Header from '../components/layout/Header.astro';
 import ProductCard from '../components/products/ProductCard.astro';
-import { products } from '../components/data/products.js'; // Verifique se este caminho está correto para sua estrutura
+import { products } from '../components/data/products.js';
 
-const productsWithImages = products;
+const categories = [
+  { label: 'Carta', value: 'Carta' },
+  { label: 'Blister', value: 'Blister' },
+  { label: 'Box', value: 'Box' }
+];
+
+const collections = [
+  { label: 'Evoluções prismáticas', value: 'Evoluções prismáticas' },
+  { label: 'Rivais predestinados', value: 'Rivais predestinados' },
+  { label: 'Raio preto', value: 'Raio preto' },
+  { label: 'Megaevoluções', value: 'Megaevoluções' },
+  { label: 'Outros', value: 'Outros' }
+];
 ---
-
 <Layout>
   <Header />
   <section class="page-hero">
@@ -15,49 +26,97 @@ const productsWithImages = products;
   <main class="produtos-container">
     <div class="produtos-flex">
       <aside class="produtos-sidebar">
-        <form class="produtos-filtros">
+        <form class="produtos-filtros" id="filter-form">
           <div class="filtro-bloco">
             <label for="busca-produto" class="filtro-label">Buscar</label>
             <input id="busca-produto" type="text" class="filtro-input" placeholder="Buscar produtos..." />
           </div>
           <div class="filtro-bloco">
-            <span class="filtro-label">Tipo de Produto</span>
+            <span class="filtro-label">Categoria</span>
             <div class="filtro-checkboxes">
-              <label><input type="checkbox" /> Booster Pack</label>
-              <label><input type="checkbox" /> Carta Avulsa</label>
-              <label><input type="checkbox" /> Box / Lata</label>
-              <label><input type="checkbox" /> Acessórios</label>
+              {categories.map(cat => (
+                <label>
+                  <input type="checkbox" name="categoria" value={cat.value.trim().toLowerCase()} />
+                  {cat.label}
+                </label>
+              ))}
             </div>
           </div>
           <div class="filtro-bloco">
             <span class="filtro-label">Coleção</span>
             <div class="filtro-checkboxes">
-              <label><input type="checkbox" /> Rivais Predestinados</label>
-              <label><input type="checkbox" /> Outras Coleções</label>
+              {collections.map(col => (
+                <label>
+                  <input type="checkbox" name="colecao" value={col.value.trim().toLowerCase()} />
+                  {col.label}
+                </label>
+              ))}
             </div>
           </div>
-          <div class="filtro-bloco">
-            <span class="filtro-label">Faixa de Preço</span>
-            <div class="filtro-checkboxes">
-              <label><input type="checkbox" /> Até R$ 20</label>
-              <label><input type="checkbox" /> R$ 21 - R$ 50</label>
-              <label><input type="checkbox" /> R$ 51 - R$ 100</label>
-              <label><input type="checkbox" /> Acima de R$ 100</label>
-            </div>
-          </div>
-          <button type="submit" class="filtro-aplicar">Aplicar Filtros</button>
         </form>
       </aside>
       <section class="produtos-lista">
-        {productsWithImages.map(product => (
+        {products.map(product => (
           <ProductCard product={product} />
         ))}
+        <p class="no-results" style="display: none;">Nenhum produto encontrado com os filtros selecionados.</p>
       </section>
     </div>
   </main>
 </Layout>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('filter-form');
+    const searchInput = document.getElementById('busca-produto');
+    const productCards = document.querySelectorAll('.produtos-lista .card-link');
+    const noResultsMessage = document.querySelector('.no-results');
+
+    function applyFilters() {
+      // 1. Pega os valores selecionados dos filtros
+      const searchTerm = searchInput.value.trim().toLowerCase();
+      const selectedCategories = Array.from(form.querySelectorAll('input[name="categoria"]:checked')).map(cb => cb.value);
+      const selectedCollections = Array.from(form.querySelectorAll('input[name="colecao"]:checked')).map(cb => cb.value);
+
+      let visibleCount = 0;
+
+      // 2. Itera sobre cada card de produto que já está na página
+      productCards.forEach(card => {
+        const cardTitle = card.querySelector('.card-title')?.textContent.trim().toLowerCase() || '';
+        const cardCategory = card.dataset.category || '';
+        const cardCollection = card.dataset.collection || '';
+        
+        // 3. Verifica se o card corresponde a TODOS os filtros
+        const searchMatch = searchTerm.length === 0 || cardTitle.includes(searchTerm);
+        const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(cardCategory);
+        const collectionMatch = selectedCollections.length === 0 || selectedCollections.includes(cardCollection);
+
+        // 4. Mostra ou esconde o card
+        if (searchMatch && categoryMatch && collectionMatch) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Mostra a mensagem de "nenhum resultado" se necessário
+      noResultsMessage.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    // 5. Adiciona os "ouvintes" que chamam a função de filtro a cada interação
+    form.addEventListener('change', applyFilters); // Para os checkboxes
+    searchInput.addEventListener('input', applyFilters); // Para a busca em tempo real
+  });
+</script>
 <style>
+.no-results {
+  font-size: 1.1rem;
+  color: #555;
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-top: 2rem;
+}
 .page-hero {
   background: linear-gradient(120deg, #ff6a36 0%, #d7263d 100%);
   padding: 3rem 0 2rem 0;
@@ -74,7 +133,7 @@ const productsWithImages = products;
 }
 .produtos-container {
   padding: 2rem 1rem;
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 .produtos-flex {
@@ -91,6 +150,8 @@ const productsWithImages = products;
   border: 1.5px solid #fc4a1a18;
   padding: 2rem 1.2rem 1.5rem 1.2rem;
   flex-shrink: 0;
+  position: sticky;
+  top: 2rem;
 }
 .produtos-filtros {
   display: flex;
@@ -116,13 +177,19 @@ const productsWithImages = products;
   transition: border 0.2s;
 }
 .filtro-input:focus {
-  border: 1.2px solid #fc4a1a;
+  border: 1.2px solid var(--color-primary);
 }
 .filtro-checkboxes {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
   font-size: 0.98rem;
+}
+.filtro-checkboxes label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
 }
 .filtro-aplicar {
   margin-top: 1.2rem;
@@ -142,11 +209,21 @@ const productsWithImages = products;
 .produtos-lista {
   flex-grow: 1;
   display: grid;
-  /* ✅ A REGRA MAIS IMPORTANTE PARA O ALINHAMENTO ✅ */
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 2rem;
-  align-items: start; /* Troque de 'stretch' para 'start' */
-  width: 100%;
+  align-items: start;
+  justify-items: center;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 @media (max-width: 900px) {
   .produtos-flex {
@@ -156,12 +233,8 @@ const productsWithImages = products;
   .produtos-sidebar {
     width: 100%;
     max-width: 500px;
-    min-width: 0;
+    position: static;
     margin-bottom: 1.5rem;
-  }
-  .produtos-lista {
-    justify-content: center;
-    width: 100%;
   }
 }
 </style>

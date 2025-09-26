@@ -3,18 +3,22 @@ export const products = [
     id: 100,
     name: "Meowth da Equipe Rocket",
     description: "Carta promocional rara do Meowth da Equipe Rocket.",
-    image: "images/meowth.jpg", // <--- CORRIGIDO
+    image: "images/meowth.jpg",
     price: "R$ 75,00",
     link: "https://shopee.com.br/product/432327414/22898902348/",
-    estoque: 1
+    estoque: 1,
+    category: "Carta",
+    collection: "Rivais predestinados"
   },
   {
     id: 1,
     name: "Spidops da Equipe Rocket",
     description: "Uma descrição breve e vendedora sobre os benefícios deste produto maravilhoso.",
-    image: "images/spidops.jpg", // Caminho para a imagem na pasta `public/images`
-    link: "https://shopee.com.br/bigowl_tcgstore#product_list", // Link direto para a Shopee
-    estoque: 0
+    image: "images/spidops.jpg",
+    link: "https://shopee.com.br/bigowl_tcgstore#product_list",
+    estoque: 0,
+    category: "Carta",
+    collection: "Rivais predestinados"
   },
   {
     id: 2,
@@ -22,7 +26,9 @@ export const products = [
     description: "Ideal para resolver o problema X, com a qualidade e design que você procura.",
     image: "images/dbz-gokublack.webp",
     link: "https://shopee.com.br/bigowl_tcgstore#product_list",
-    estoque: 0
+    estoque: 0,
+    category: "Carta",
+    collection: "Outros"
   },
   {
     id: 3,
@@ -31,7 +37,9 @@ export const products = [
     image: "images/ME01-BoosterBox.jpg",
     price: "-",
     link: "#",
-    estoque: -1 // -1 indica 'em breve'
+    estoque: -1,
+    category: "Box",
+    collection: "Megaevoluções"
   },
   {
     id: 5,
@@ -40,7 +48,9 @@ export const products = [
     image: "images/BB-Houndoom.jpg",
     price: "-",
     link: "#",
-    estoque: -1
+    estoque: -1,
+    category: "Carta",
+    collection: "Rivais predestinados"
   },
   {
     id: 6,
@@ -49,7 +59,9 @@ export const products = [
     image: "images/ME01-Triplepack-Drifloon.jpg",
     price: "-",
     link: "#",
-    estoque: -1
+    estoque: -1,
+    category: "Blister",
+    collection: "Megaevoluções"
   },
   {
     id: 7,
@@ -58,7 +70,9 @@ export const products = [
     image: "images/RP-Triplepack.jpg",
     price: "-",
     link: "#",
-    estoque: -1
+    estoque: -1,
+    category: "Blister",
+    collection: "Raio preto"
   },
   {
     id: 8,
@@ -67,7 +81,9 @@ export const products = [
     image: "images/ME01-Triplepack-Drifblim.png",
     price: "-",
     link: "#",
-    estoque: -1
+    estoque: -1,
+    category: "Blister",
+    collection: "Megaevoluções"
   },
   {
     id: 9,
@@ -76,7 +92,9 @@ export const products = [
     image: "images/ME01-Blisterunitario.jpg",
     price: "-",
     link: "#",
-    estoque: -1
+    estoque: -1,
+    category: "Blister",
+    collection: "Megaevoluções"
   },
   {
     id: 10,
@@ -85,7 +103,9 @@ export const products = [
     image: "images/ME01-Quadripack-Golduck.png",
     price: "-",
     link: "#",
-    estoque: -1
+    estoque: -1,
+    category: "Blister",
+    collection: "Megaevoluções"
   },
   {
     id: 11,
@@ -94,7 +114,9 @@ export const products = [
     image: "images/ME01-Quadripack-Psyduck.png",
     price: "-",
     link: "#",
-    estoque: -1
+    estoque: -1,
+    category: "Blister",
+    collection: "Megaevoluções"
   },
   {
     id: 13,
@@ -103,6 +125,8 @@ export const products = [
     image: "images/EP-BoxPremium.jpg",
     price: "-",
     link: "#",
-    estoque: -1
+    estoque: -1,
+    category: "Box",
+    collection: "Evoluções prismáticas"
   }
 ];
