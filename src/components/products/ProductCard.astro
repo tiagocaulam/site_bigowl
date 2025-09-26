@@ -4,7 +4,14 @@ const { product } = Astro.props;
 const base = import.meta.env.BASE_URL;
 ---
 
-<a href={product.estoque > 0 ? product.link : undefined} target={product.estoque > 0 ? "_blank" : undefined} rel={product.estoque > 0 ? "noopener noreferrer" : undefined} class="card-link {product.estoque === 0 ? 'is-out-of-stock' : ''}">
+<a
+  href={product.estoque > 0 ? product.link : undefined}
+  target={product.estoque > 0 ? "_blank" : undefined}
+  rel={product.estoque > 0 ? "noopener noreferrer" : undefined}
+  data-category={product.category ? product.category.trim().toLowerCase() : ''}
+  data-collection={product.collection ? product.collection.trim().toLowerCase() : ''}
+  class:list={["card-link", { 'is-out-of-stock': product.estoque === 0 }]}
+>
   <div class="card">
     <div class="card-img-wrapper">
       <img src={`${base}${product.image}`} alt={`Imagem do ${product.name}`} />
@@ -39,7 +46,8 @@ const base = import.meta.env.BASE_URL;
   display: flex;
   flex-direction: column;
   /* --- MUDANÇA PRINCIPAL AQUI --- */
-  width: 100%; /* O card agora ocupa 100% da coluna do grid onde ele estiver */
+  width: 100%; /* Ocupa a coluna, mas limitado por max-width para não esticar */
+  max-width: 280px; /* Mantém tamanho visual constante mesmo com 1-2 itens */
   /* As larguras fixas de 230px foram removidas */
   
   height: 390px;
