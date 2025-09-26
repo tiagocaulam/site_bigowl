@@ -6,8 +6,8 @@ const base = import.meta.env.BASE_URL;
 <section class="hero">
   <div class="container hero-container">
     <div class="hero-content">
-      <img src={`${base}images/logo-raio-preto-branco.png`} alt="Logo da Coleção" class="collection-logo" />
-      <h1>Nova coleção de Pokemon: Raio Preto e Fogo Branco!</h1>
+      <img src={`${base}images/logo-mega-evolution.png`} alt="Logo da Coleção" class="collection-logo" />
+      <h1>Nova coleção de Pokemon: Megaevoluções!</h1>
       <p>Adiquira agora a nova coleção do Pokémon TCG. Temos packs avulsos, Blisters e ETBs prontos para você.</p>
       <div class="hero-buttons">
         <Button href="https://shopee.com.br/bigowl_tcgstore" text="Comprar agora" variant="primary" />
@@ -56,9 +56,9 @@ const base = import.meta.env.BASE_URL;
   .collection-logo {
     width: 100%; /* Ocupa 100% do espaço do pai */
     /* Convertido para rem e usado como max-width */
-    max-width: 18.75rem; /* 300px / 16px = 18.75rem */
-    align-self: center;
-    margin-bottom: 1rem;
+    max-width: 24rem; /* 384px */
+    align-self: left;
+    margin-bottom: -4rem;
   }
   .hero-content h1 {
     /* Texto fluido: mínimo de 2.25rem, ideal de 5vw, máximo de 3rem */
@@ -77,7 +77,7 @@ const base = import.meta.env.BASE_URL;
     margin-top: 2rem;
   }
   .hero-image img {
-    width: 100%;
+    width: 120%;
     /* Convertido para rem */
     max-width: 50rem; /* 800px / 16px = 50rem */
   }
