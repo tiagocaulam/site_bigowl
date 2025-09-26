@@ -1,15 +1,16 @@
 ---
 import { products } from '../data/products.js';
 import ProductCard from '../products/ProductCard.astro';
-import Button from '../ui/Button.astro'; // 1. Importamos o componente de botão
+import Button from '../ui/Button.astro';
 const base = import.meta.env.BASE_URL;
+const megaProducts = products.filter(p => (p.collection || '').trim().toLowerCase() === 'megaevoluções');
 ---
 <section class="home-products pokebola-bg">
   <div class="container">
     <h2>Nossos produtos</h2>
     <p class="home-products__desc">Descubra nosso catálogo de produtos totalmente oficiais de Pokémon</p>
     <div class="home-products-lista">
-      {products.slice(0, 4).map(product => (
+      {megaProducts.slice(0, 4).map(product => (
         <ProductCard product={product} />
       ))}
     </div>
