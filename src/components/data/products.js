@@ -15,8 +15,20 @@ export const products = [
     name: "Spidops da Equipe Rocket",
     description: "Uma descrição breve e vendedora sobre os benefícios deste produto maravilhoso.",
     image: "images/spidops.jpg",
-    link: "https://shopee.com.br/bigowl_tcgstore#product_list",
-    estoque: 0,
+    link: "https://shopee.com.br/product/432327414/23498920438/",
+    price: "R$ 49,90",
+    estoque: 1,
+    category: "Carta",
+    collection: "Rivais predestinados"
+  },
+  {
+    id: 14,
+    name: "Houndoom da Equipe Rocket",
+    description: "Uma descrição breve e vendedora sobre os benefícios deste produto maravilhoso.",
+    image: "images/Houndoom-er-rp.jpg",
+    link: "https://shopee.com.br/product/432327414/21299887549/",
+    price: "R$ 55,00",
+    estoque: 1,
     category: "Carta",
     collection: "Rivais predestinados"
   },
@@ -49,7 +61,7 @@ export const products = [
     price: "-",
     link: "#",
     estoque: -1,
-    category: "Carta",
+    category: "Deck",
     collection: "Rivais predestinados"
   },
   {

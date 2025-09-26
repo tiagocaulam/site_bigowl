@@ -7,7 +7,8 @@ import { products } from '../components/data/products.js';
 const categories = [
   { label: 'Carta', value: 'Carta' },
   { label: 'Blister', value: 'Blister' },
-  { label: 'Box', value: 'Box' }
+  { label: 'Box', value: 'Box' },
+  { label: 'Deck', value: 'Deck' }
 ];
 
 const collections = [
@@ -209,10 +210,12 @@ const collections = [
 .produtos-lista {
   flex-grow: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  /* Colunas fixas para manter tamanho constante dos cards */
+  grid-template-columns: repeat(auto-fill, 280px);
   gap: 2rem;
   align-items: start;
-  justify-items: center;
+  justify-items: center; /* Centraliza o conteúdo dentro de cada célula */
+  justify-content: center; /* Centraliza o grid quando sobram espaços (1-2 itens) */
 }
 .visually-hidden {
   position: absolute;
