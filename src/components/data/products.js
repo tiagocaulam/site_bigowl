@@ -140,5 +140,16 @@ export const products = [
     estoque: -1,
     category: "Box",
     collection: "Evoluções prismáticas"
+  },
+  {
+    id: 15,
+    name: "Combo de Booster Pokemon megaevolução",
+    description: "Combo de Booster Pokemon megaevolução. Produto especial para colecionadores.",
+    image: "images/Minidisplay-Me01.png",
+    price: "-",
+    link: "#",
+    estoque: -1,
+    category: "Box",
+    collection: "megaevoluções"
   }
 ];
