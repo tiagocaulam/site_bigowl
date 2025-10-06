@@ -47,9 +47,9 @@ export const products = [
     name: "Booster Box Mega evoluções 36 pcts.",
     description: "A caixa perfeita para colecionadores e jogadores. Contém 36 pacotes da coleção Mega Evoluções.",
     image: "images/ME01-BoosterBox.jpg",
-    price: "-",
-    link: "#",
-    estoque: -1,
+    price: "R$ 448,00",
+    link: "https://shopee.com.br/Booster-Box-Pokemon-Mega-Evolu%C3%A7%C3%A3o-(com-36-pacotes)-ME01-i.432327414.23994431592",
+    estoque: 4,
     category: "Box",
     collection: "Megaevoluções"
   },
@@ -143,8 +143,8 @@ export const products = [
   },
   {
     id: 15,
-    name: "Combo de Booster Pokemon megaevolução",
-    description: "Combo de Booster Pokemon megaevolução. Produto especial para colecionadores.",
+    name: "Combo de Booster Pokemon Megaevolução",
+    description: "Combo de Booster Pokemon Megaevolução. Produto especial para colecionadores.",
     image: "images/Minidisplay-Me01.png",
     price: "-",
     link: "#",
